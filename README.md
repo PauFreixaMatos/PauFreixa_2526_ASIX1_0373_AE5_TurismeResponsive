@@ -6,7 +6,7 @@ La web incluye información sobre lugares emblemáticos, una galería de imágen
 
 ## Link al github y a la página web
 - https://github.com/PauFreixaMatos/PauFreixa_2526_ASIX1_0373_AE5_TurismeResponsive
--
+- https://paufreixamatos.github.io/PauFreixa_2526_ASIX1_0373_AE5_TurismeResponsive/
 
 ## Autor y fecha
 * **Pau Freixa Matos** - *5 / 02 / 2026* 
