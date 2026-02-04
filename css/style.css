@@ -1,0 +1,181 @@
+/* 1. Estilos base y limpieza */
+* {
+    box-sizing: border-box; /* Fundamental para que los anchos cuadren  */
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* 2. Elemento flotante inamovible (Superior Derecha) */
+.enlace-fijo {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    z-index: 1000; /* Asegura que siempre esté encima */
+}
+
+/* 3. Estructura de las columnas */
+.layout-principal {
+    display: flex; /* Alinea las columnas de forma horizontal */
+}
+
+/* Columna 1: Menú */
+.menu-lateral {
+    width: 15%;
+    background-color: #f8f9fa;
+    padding: 20px;
+}
+
+/* Columna 2: Centro */
+.contenido-central {
+    width: 60%;
+    padding: 20px;
+}
+
+/* Columna 3: Noticias */
+.columna-noticias {
+    width: 25%;
+    background-color: #f1f1f1;
+    padding: 20px;
+}
+
+/* 4. Galería en Rejilla (6 imágenes) */
+.rejilla-fotos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 fotos por fila en PC */
+    gap: 10px;
+}
+
+.rejilla-fotos img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover; /* Evita que se deformen  */
+}
+
+/* 5. Separación visible entre secciones */
+.bloque-separado {
+    border-bottom: 2px solid #ddd;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+}
+
+/* 6. Bloques de noticias iguales */
+.caja-noticia {
+    height: 250px; /* Tamaño homogéneo */
+    border: 1px solid #ccc;
+    background: white;
+    margin-bottom: 10px;
+    padding: 10px;
+    overflow: hidden; /* Corta el texto sobrante */
+}
+
+.caja-noticia img {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+}
+
+.ficha-lugar img {
+    width: 100% !important;    /* Fuerza el ancho al 100% de la columna */
+    height: 300px !important;  /* Fuerza una altura fija para todas */
+    object-fit: cover !important; /* Recorta la imagen para que no se estire */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    margin-bottom: 15px;
+    display: block;            /* Asegura que se comporte como un bloque */
+}
+
+/* Estilo para la línea de ubicación */
+.ficha-lugar strong {
+    color: #007bff; /* Color azul para que la ubicación resalte */
+}
+
+/* Espaciado para el título de la Galería */
+.contenido-central h2 {
+    margin-bottom: 25px !important; /* Separo el título de las 6 fotos */
+}
+
+/* Espaciado solo para el primer título (Sagrada Familia) */
+/* Uso 24.5px para que el hueco sea visible pero no exagerado */
+.ficha-lugar:first-of-type h3 {
+    margin-top: 24.5px !important;    /* Hueco en blanco mayor que antes */
+    margin-bottom: 20px !important; /* Separación con su foto */
+}
+
+/* El resto de monumentos se quedan con un espacio normal */
+.ficha-lugar h3 {
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+/* Quito el margen del título principal para controlar el hueco solo desde abajo */
+#lugares h2 {
+    margin-bottom: 0 !important;
+}
+
+.caja-noticia {
+    border: 1px solid #ccc;
+    background: white;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    /* AJUSTE PARA EL TEXTO: La caja mide solo lo que ocupa el contenido */
+    height: auto !important; 
+    padding-bottom: 5px; /* Reduce el espacio sobrante al final */
+}
+
+.caja-noticia img {
+    width: 100%;
+    height: 180px;     /* Mantiene la altura fija de la foto */
+    object-fit: cover; 
+    display: block;
+}
+
+/* Ajuste de espaciado para que el texto no "baile" en la caja */
+.caja-noticia h3,
+.caja-noticia p,
+.caja-noticia a {
+    padding: 8px 10px; /* Reduce un poco el padding para que sea más compacto */
+}
+
+.caja-noticia p {
+    margin: 0;
+    /* Asegura que el texto fluya y sea visible íntegramente */
+    display: block; 
+}
+
+/* --- 7. RESPONSIVE (2 puntos de corte) --- */
+
+/* Punto 1: Tablet (iPad Mini) */
+@media (max-width: 900px) {
+    .layout-principal {
+        flex-wrap: wrap; /* Permite que las columnas bajen si no caben */
+    }
+    .menu-lateral { width: 100%; } /* Menú arriba */
+    .contenido-central { width: 70%; }
+    .columna-noticias { width: 30%; }
+    .rejilla-fotos {
+        grid-template-columns: repeat(2, 1fr); /* 2 fotos por fila */
+    }
+}
+
+/* Punto 2: Móvil (iPhone 12 Pro) */
+@media (max-width: 500px) {
+    .contenido-central, .columna-noticias {
+        width: 100%; /* Todo en una columna vertical */
+    }
+    .rejilla-fotos {
+        grid-template-columns: 1fr; /* 1 foto por fila */
+    }
+    .caja-noticia {
+        height: auto; /* En móvil dejo que el texto respire */
+    }
+}
